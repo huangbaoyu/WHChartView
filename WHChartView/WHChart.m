@@ -117,7 +117,15 @@
 }
 
 - (void)drawYLabel{
-    
+    for (NSInteger i; i<5; ++i) {
+        UILabel *label = [[UILabel alloc]initWithFrame:CGRectMake(0, origin.y - 10 - barHeight*i/4, spaceBetweenYandLeft*4/5, 20)];
+        label.text =  @"10";
+        label.textAlignment = NSTextAlignmentRight;
+        label.font = [UIFont systemFontOfSize:12];
+        //label.backgroundColor = [UIColor orangeColor];
+        [self addSubview:label];
+        
+    }
 }
 
 //画坐标轴
