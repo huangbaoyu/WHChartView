@@ -18,6 +18,7 @@
     float spaceBetweenYandLeft; //Y轴与左边的距离
     float spaceBetweenXandBottom; //X轴与底边的距离
     int   max; //最大数值
+    int   min;
     int   dataNumber;//数据个数
 }
 
@@ -65,26 +66,58 @@
     barWidth = singleBarSpaceWidth*2/3;
     barHeight = origin.y - yEnd.y -9;
     
-    [self findMaxNumberOfData];
+    [self findMaxAndMinNumberOfData];
 }
 
 
 #pragma mark - Calcalate
-- (void)findMaxNumberOfData
+- (void)findMaxAndMinNumberOfData
 {
-    max = 0;
+    max = -1000;
+    min = 1000;
     for (NSNumber *i in _data) {
         if ( max < i.intValue) {
             max = i.intValue;
+        }else if(min > i .intValue){
+            min = i.intValue;
         }
     }
+    NSLog(@"max = %d,min = %d",max,min);
 }
 
 #pragma mark - Drwa
 - (void)drawRect:(CGRect)rect{
     if ([_data count] > 0) {
         [self drawAxis];
+        [self drawLabel];
     }
+}
+
+
+- (void)drawLabel{
+    [self drawXLabel];
+    [self drawYLabel];
+}
+
+- (void)drawXLabel{
+    for (NSInteger i ; i < [_data count]; i++) {
+        UILabel *label = [[UILabel alloc]initWithFrame:CGRectMake(
+                                                                  spaceBetweenYandLeft + i * singleBarSpaceWidth,
+                                                                  origin.y,
+                                                                  singleBarSpaceWidth,
+                                                                  spaceBetweenXandBottom)];
+        
+        label.textAlignment = NSTextAlignmentCenter;
+        label.text = @"7-28";
+        label.backgroundColor = [UIColor clearColor];
+        NSInteger fountSize = 4 +  singleBarSpaceWidth/( label.text.length > 1 ? label.text.length : 2 );
+        label.font = [UIFont systemFontOfSize:fountSize < 17 ? fountSize:16];
+        [self addSubview:label];
+    }
+}
+
+- (void)drawYLabel{
+    
 }
 
 //画坐标轴
@@ -102,18 +135,26 @@
     
     CGContextStrokePath(context);
     CGPathRelease(path);
+    NSLog(@"drawAxis");
 }
 
 -(void)strokeChart
 {
     for (NSInteger i = 0; i < [_data count]; ++i) {
         float percentage = [_data[i] floatValue] / max;
-        WHChartBar *bar = [[WHChartBar alloc]initWithFrame:CGRectMake(10+ ((i+1) * singleBarSpaceWidth) - barWidth/2, yEnd.y + 8 , barWidth, barHeight)];
+        
+        WHChartBar *bar = [[WHChartBar alloc]initWithFrame:CGRectMake(
+                                      spaceBetweenYandLeft + i * singleBarSpaceWidth +(singleBarSpaceWidth-barWidth)/2,
+                                      origin.y - barHeight ,
+                                      barWidth,
+                                      barHeight)];
+        
         bar.backgroundColorofBar = _backgroundColorofBar;
         //bar.colorofBar = _colorofBar;
         bar.percentage = percentage;
         [self addSubview:bar];
     }
+    NSLog(@"strokeChart");
 }
 
 @end
