@@ -20,7 +20,8 @@
 - (id)initWithFrame:(CGRect)frame{
     self = [super initWithFrame:frame];
     if (self) {
-        _backgroundColorofBar = [UIColor whiteColor];
+        //_backgroundColorofBar = [UIColor clearColor];
+        self.backgroundColor = [UIColor clearColor];
         _colorofBar = [UIColor whLightBlue];
         
         _bar = [CAShapeLayer layer];
@@ -45,10 +46,22 @@
 - (void)labelTapped:(id)sender{
     if (!labelHasShown) {
         label = [[UILabel alloc]init];
-        label.text = @"179";
-        label.font = [UIFont systemFontOfSize:13.0];
+        UIColor *labelBackGroundColor = [_backgroundColorofChart colorWithAlphaComponent:0.7];
+        
+        label.backgroundColor =
+                                (_percentage >= (self.frame.size.height - self.frame.size.width)/self.frame.size.height) ?
+                                [UIColor clearColor]:labelBackGroundColor;
+        
         label.textAlignment = NSTextAlignmentCenter;
-        //label.text = [NSString stringWithFormat:@"%f",_labelValue];
+        if (_labelValue == (int)_labelValue) {
+            label.text = [NSString stringWithFormat:@"%d",(int)_labelValue];
+        }else{
+            label.text = [NSString stringWithFormat:@"%.1f",_labelValue];
+        }
+
+        float fountSize =3 + self.frame.size.width /label.text.length;
+        label.font = [UIFont systemFontOfSize:fountSize > 14 ? 13:fountSize];
+        
         label.translatesAutoresizingMaskIntoConstraints = NO;
         [self addSubview:label];
         [self SetAutoLayoutOfLabelAndSelf];
@@ -78,9 +91,15 @@
                                                                         attribute:NSLayoutAttributeWidth
                                                                        multiplier:1.0
                                                                          constant:0];
-    NSNumber *number = [NSNumber numberWithDouble:(_percentage == 1) ? (self.frame.size.height - 20):(self.frame.size.height*_percentage - 2)];
+    
+    NSNumber *number = [NSNumber numberWithDouble:
+                        (_percentage >= (self.frame.size.height - self.frame.size.width)/self.frame.size.height) ?
+                        (self.frame.size.height - label.font.lineHeight):(self.frame.size.height*_percentage )];
+    //(self.frame.size.height - self.frame.size.width)
+    
     NSDictionary *metrics = @{@"height":number};
     NSDictionary *views = @{@"label":label};
+    
     NSArray *topConstraints = [NSLayoutConstraint constraintsWithVisualFormat:@"V:[label]-height-|"
                                                                       options:0
                                                                       metrics:metrics
@@ -101,7 +120,7 @@
 {
     //Draw Background
     CGContextRef context = UIGraphicsGetCurrentContext();
-    CGContextSetFillColorWithColor(context, _backgroundColorofBar.CGColor);
+    CGContextSetFillColorWithColor(context, [UIColor clearColor].CGColor);
     CGContextFillRect(context, rect);
     
 }

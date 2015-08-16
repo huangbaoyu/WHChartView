@@ -48,15 +48,15 @@
     
     
     self.backgroundColor = [UIColor whiteColor];
-    _backgroundColorofBar = self.backgroundColor;
+    //_backgroundColorofBar = self.backgroundColor;
     _colorofBar = [UIColor greenColor];
 }
 
 #pragma mark - Overwrite Setter
-- (void)setBackgroundColor:(UIColor *)backgroundColor{
-    super.backgroundColor = backgroundColor;
-    _backgroundColorofBar = backgroundColor;
-}
+//- (void)setBackgroundColor:(UIColor *)backgroundColor{
+//    super.backgroundColor = backgroundColor;
+//    _backgroundColorofBar = backgroundColor;
+//}
 
 - (void)setChartData:(NSArray *)chartData{
     _data = [NSMutableArray arrayWithArray:chartData];
@@ -89,10 +89,10 @@
 - (void)drawRect:(CGRect)rect{
     if ([_data count] > 0) {
         [self drawAxis];
+        [self drawGridding];
         [self drawLabel];
     }
 }
-
 
 - (void)drawLabel{
     [self drawXLabel];
@@ -174,6 +174,28 @@
     NSLog(@"drawAxis");
 }
 
+- (void)drawGridding
+{
+    if (!_showGridding) {
+        return;
+    }
+    
+    CGContextRef context = UIGraphicsGetCurrentContext();
+   // CGContextSetRGBStrokeColor(context, 189.0/255.0, 295.0/255.0, 199.0/255.0, 1.0); //rgb(189, 195, 199)
+     CGContextSetRGBStrokeColor(context, 0, 0, 0, 1.0);
+    for (NSInteger i = 0; i<5 ; ++i) {
+        CGMutablePathRef path = CGPathCreateMutable();
+        CGPathMoveToPoint(path, NULL, origin.x, origin.y - barHeight*i/4);
+        CGPathAddLineToPoint(path, NULL, xEnd.x, origin.y - barHeight*i/4);
+        
+        CGContextAddPath(context, path);
+        CGContextStrokePath(context);
+        CGPathRelease(path);
+    }
+
+    
+}
+
 -(void)strokeChart
 {
     for (NSInteger i = 0; i < [_data count]; ++i) {
@@ -184,8 +206,9 @@
                                       origin.y - barHeight ,
                                       barWidth,
                                       barHeight)];
-        
-        bar.backgroundColorofBar = _backgroundColorofBar;
+        bar.labelValue = [_data[i] floatValue];
+        bar.backgroundColorofChart = self.backgroundColor;
+        //bar.backgroundColorofBar = _backgroundColorofBar;
         //bar.colorofBar = _colorofBar;
         bar.percentage = percentage;
         [self addSubview:bar];

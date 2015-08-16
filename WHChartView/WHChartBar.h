@@ -10,7 +10,7 @@
 
 @interface WHChartBar : UIView
 
-@property (nonatomic, weak)     UIColor *backgroundColorofBar;
+@property (nonatomic, weak)     UIColor *backgroundColorofChart;
 @property (nonatomic, weak)     UIColor *colorofBar;
 @property (nonatomic, strong)   CAShapeLayer *bar;
 @property (nonatomic)           float percentage; //      percentage = (bar's height) / (self.view's height)

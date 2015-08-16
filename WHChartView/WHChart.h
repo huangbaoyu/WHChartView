@@ -10,9 +10,10 @@
 
 @interface WHChart : UIView
 
-@property (nonatomic, weak) UIColor *backgroundColorofBar;
+//@property (nonatomic, weak) UIColor *backgroundColorofBar;
 @property (nonatomic, weak) UIColor *colorofBar;
 @property (nonatomic, weak) NSString *title;
+@property (nonatomic)       BOOL showGridding;
 
 - (void)setChartData:(NSArray *)chartData;
 - (void)strokeChart;
