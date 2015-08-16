@@ -134,10 +134,10 @@
 			children = (
 				7286FAFD1B7F2D4000CE55D8 /* UIColor+WHColor.h */,
 				7286FAFE1B7F2D4000CE55D8 /* UIColor+WHColor.m */,
-				7286FAF71B7F2B2C00CE55D8 /* WHChart.h */,
-				7286FAF81B7F2B2C00CE55D8 /* WHChart.m */,
 				7286FAFA1B7F2B4B00CE55D8 /* WHChartBar.h */,
 				7286FAFB1B7F2B4B00CE55D8 /* WHChartBar.m */,
+				7286FAF71B7F2B2C00CE55D8 /* WHChart.h */,
+				7286FAF81B7F2B2C00CE55D8 /* WHChart.m */,
 			);
 			name = WHChart;
 			sourceTree = "<group>";
@@ -442,6 +442,7 @@
 				7286FAF31B7F2AB900CE55D8 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		7286FAF41B7F2AB900CE55D8 /* Build configuration list for PBXNativeTarget "WHChartViewTests" */ = {
 			isa = XCConfigurationList;
@@ -450,6 +451,7 @@
 				7286FAF61B7F2AB900CE55D8 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

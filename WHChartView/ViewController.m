@@ -8,6 +8,7 @@
 
 #import "ViewController.h"
 #import "WHChart.h"
+#import "UIColor+WHColor.h"
 @interface ViewController (){
     WHChart *chart;
 }
@@ -26,12 +27,20 @@
 {
     chart = [[WHChart alloc]initWithFrame:CGRectMake(20, 100, self.view.bounds.size.width - 40, 200)];
     
-    NSArray *temp = @[@123.5,@122,@87,@101.1,@16,@60.6,@51,@44];
-    //chart.backgroundColor = [UIColor grayColor];
-    chart.title = @"UIColor";
+    NSArray *dataValue = @[@123.5,@122,@87,@101.1,@16,@60.6,@51,@44];
+    NSArray *xLabelString = @[@"6-10",@"6-11",@"6-12",@"6-13",@"6-14",@"6-15",@"6-16",@"6-17"];
+    
+    chart.backgroundColor = [UIColor whiteColor];
+    chart.xLabelString = xLabelString;
+    chart.title = @"用电数据";
     chart.showGridding = YES;
-    [chart setChartData:temp];
+    chart.colorOfTitle = [UIColor blackColor];
+    chart.colorOfXYLabel = [UIColor lightGrayColor];
+    chart.colorOfBar = [UIColor whLightBlue];
+    
+    [chart setChartData:dataValue];
     [chart strokeChart];
+    
     return chart;
 }
 

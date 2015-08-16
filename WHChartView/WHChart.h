@@ -10,10 +10,12 @@
 
 @interface WHChart : UIView
 
-//@property (nonatomic, weak) UIColor *backgroundColorofBar;
-@property (nonatomic, weak) UIColor *colorofBar;
-@property (nonatomic, weak) NSString *title;
-@property (nonatomic)       BOOL showGridding;
+@property (nonatomic, weak)     UIColor *colorOfBar;
+@property (nonatomic, weak)     UIColor *colorOfTitle;
+@property (nonatomic, weak)     UIColor *colorOfXYLabel;
+@property (nonatomic, weak)     NSString *title;
+@property (nonatomic, strong)   NSArray *xLabelString;
+@property (nonatomic)           BOOL showGridding;
 
 - (void)setChartData:(NSArray *)chartData;
 - (void)strokeChart;
