@@ -97,6 +97,7 @@
 - (void)drawLabel{
     [self drawXLabel];
     [self drawYLabel];
+    [self drawTitleLabel];
 }
 
 - (void)drawXLabel{
@@ -126,6 +127,33 @@
         [self addSubview:label];
         
     }
+}
+
+- (void)drawTitleLabel{
+    if (!_title) {
+        return;
+    }
+    
+    UILabel *label = [[UILabel alloc]init];
+                      //WithFrame:CGRectMake( (self.frame.size.width - _title.length*16)/2, 0, _title.length*16, origin.y - barHeight)];
+    label.text = _title;
+    label.translatesAutoresizingMaskIntoConstraints = NO;
+    [self addSubview:label];
+    NSLayoutConstraint *centerConstraint = [NSLayoutConstraint constraintWithItem:label
+                                                                        attribute:NSLayoutAttributeCenterX
+                                                                        relatedBy:NSLayoutRelationEqual
+                                                                           toItem:self
+                                                                        attribute:NSLayoutAttributeCenterX
+                                                                       multiplier:1.0
+                                                                         constant:0];
+    NSDictionary *metrics = @{@"height":@(origin.y - barHeight)};
+    NSDictionary *views = @{@"label":label};
+    NSArray *heightConstraints = [NSLayoutConstraint constraintsWithVisualFormat:@"V:|-0-[label(==height)]"
+                                                                        options:0
+                                                                        metrics:metrics
+                                                                          views:views];
+    [self addConstraint:centerConstraint];
+    [self addConstraints:heightConstraints];
 }
 
 //画坐标轴

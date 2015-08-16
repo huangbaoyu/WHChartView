@@ -27,7 +27,8 @@
     chart = [[WHChart alloc]initWithFrame:CGRectMake(20, 100, self.view.bounds.size.width - 40, 200)];
     
     NSArray *temp = @[@123,@13,@87,@10,@16,@60,@51,@44];
-    
+    //chart.backgroundColor = [UIColor grayColor];
+    chart.title = @"UIColor";
     [chart setChartData:temp];
     [chart strokeChart];
     return chart;

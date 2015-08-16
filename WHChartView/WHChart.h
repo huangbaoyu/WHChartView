@@ -12,6 +12,7 @@
 
 @property (nonatomic, weak) UIColor *backgroundColorofBar;
 @property (nonatomic, weak) UIColor *colorofBar;
+@property (nonatomic, weak) NSString *title;
 
 - (void)setChartData:(NSArray *)chartData;
 - (void)strokeChart;
