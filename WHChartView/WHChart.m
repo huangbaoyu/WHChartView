@@ -50,6 +50,7 @@
     _colorOfBar = [UIColor greenColor];
     _colorOfTitle = [UIColor blackColor];
     _colorOfXYLabel = [UIColor blackColor];
+    _colorOfLine = [UIColor grayColor];
     
     _showGridding = NO;
     _drawBarChart = YES;
@@ -241,7 +242,7 @@
     chartLine.fillColor   = [[UIColor clearColor] CGColor];
     chartLine.lineWidth  = 2.0;
     chartLine.strokeEnd  = 0.0;
-    chartLine.strokeColor = [UIColor blackColor].CGColor;
+    chartLine.strokeColor = _colorOfLine.CGColor;
     [self.layer addSublayer:chartLine];
     
     UIBezierPath *progressline = [UIBezierPath bezierPath];

@@ -10,11 +10,17 @@
 
 @interface WHChart : UIView
 
-@property (nonatomic, weak)     UIColor *colorOfBar;
-@property (nonatomic, weak)     UIColor *colorOfTitle;
-@property (nonatomic, weak)     UIColor *colorOfXYLabel;
-@property (nonatomic, weak)     NSString *title;
+//Color
+@property (nonatomic, strong)   UIColor *colorOfBar;
+@property (nonatomic, strong)   UIColor *colorOfTitle;
+@property (nonatomic, strong)   UIColor *colorOfLine;
+@property (nonatomic, strong)   UIColor *colorOfXYLabel;
+
+//Data
+@property (nonatomic, strong)   NSString *title;
 @property (nonatomic, strong)   NSArray *xLabelString;
+
+//BOOL Switch
 @property (nonatomic)           BOOL showGridding;
 @property (nonatomic)           BOOL drawBarChart;
 @property (nonatomic)           BOOL drawLineChart;

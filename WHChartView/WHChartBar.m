@@ -95,7 +95,6 @@
     NSNumber *number = [NSNumber numberWithDouble:
                         (_percentage >= (self.frame.size.height - self.frame.size.width)/self.frame.size.height) ?
                         (self.frame.size.height - label.font.lineHeight):(self.frame.size.height*_percentage )];
-    //(self.frame.size.height - self.frame.size.width)
     
     NSDictionary *metrics = @{@"height":number};
     NSDictionary *views = @{@"label":label};
