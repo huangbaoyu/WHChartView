@@ -50,6 +50,10 @@
     _colorOfBar = [UIColor greenColor];
     _colorOfTitle = [UIColor blackColor];
     _colorOfXYLabel = [UIColor blackColor];
+    
+    _showGridding = NO;
+    _drawBarChart = YES;
+    _drawLineChart = NO;
 }
 
 #pragma mark - Overwrite Setter
@@ -131,7 +135,7 @@
         label.textAlignment = NSTextAlignmentRight;
         label.font = [UIFont systemFontOfSize:12];
         [self addSubview:label];
-    }
+    }    
 }
 
 - (void)drawTitleLabel
@@ -201,20 +205,67 @@
 
 -(void)strokeChart
 {
+    if (_drawBarChart) {
+        [self drawBarInChart];
+    }
+    
+    if (_drawLineChart) {
+        [self drawLineInChart];
+    }
+
+}
+
+- (void)drawBarInChart
+{
     for (NSInteger i = 0; i < [_data count]; ++i) {
         float percentage = [_data[i] floatValue] / max;
         
         WHChartBar *bar = [[WHChartBar alloc]initWithFrame:CGRectMake(
-                                      spaceBetweenYandLeft + i * singleBarSpaceWidth +(singleBarSpaceWidth-barWidth)/2,
-                                      origin.y - barHeight ,
-                                      barWidth,
-                                      barHeight)];
+                                                                      spaceBetweenYandLeft + i * singleBarSpaceWidth +(singleBarSpaceWidth-barWidth)/2,
+                                                                      origin.y - barHeight ,
+                                                                      barWidth,
+                                                                      barHeight)];
         bar.labelValue = [_data[i] floatValue];
         bar.backgroundColorofChart = self.backgroundColor;
         bar.colorofBar = _colorOfBar;
         bar.percentage = percentage;
         [self addSubview:bar];
     }
+}
+
+- (void)drawLineInChart
+{
+    CAShapeLayer *chartLine = [CAShapeLayer layer];
+    chartLine.lineCap = kCALineCapRound;
+    chartLine.lineJoin = kCALineJoinBevel;
+    chartLine.fillColor   = [[UIColor clearColor] CGColor];
+    chartLine.lineWidth  = 2.0;
+    chartLine.strokeEnd  = 0.0;
+    chartLine.strokeColor = [UIColor blackColor].CGColor;
+    [self.layer addSublayer:chartLine];
+    
+    UIBezierPath *progressline = [UIBezierPath bezierPath];
+    [progressline setLineWidth:2.0];
+    [progressline setLineCapStyle:kCGLineCapRound];
+    [progressline setLineJoinStyle:kCGLineJoinRound];
+    
+    [progressline moveToPoint:CGPointMake(spaceBetweenYandLeft   + singleBarSpaceWidth/2, origin.y - barHeight * [_data[0] floatValue] / max)];
+    
+    for (NSInteger i = 1; i < [_data count]; ++i) {
+        float percentage = [_data[i] floatValue] / max;
+        [progressline addLineToPoint:CGPointMake(spaceBetweenYandLeft + singleBarSpaceWidth * (i) +singleBarSpaceWidth/2, origin.y - barHeight* percentage)];
+    }
+    chartLine.path = progressline.CGPath;
+    
+    CABasicAnimation *pathAnimation = [CABasicAnimation animationWithKeyPath:@"strokeEnd"];
+    pathAnimation.duration = 1;
+    pathAnimation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
+    pathAnimation.fromValue = [NSNumber numberWithFloat:0.0f];
+    pathAnimation.toValue = [NSNumber numberWithFloat:1.0f];
+    pathAnimation.autoreverses = NO;
+    [chartLine addAnimation:pathAnimation forKey:@"strokeEndAnimation"];
+    
+    chartLine.strokeEnd = 1.0;
 }
 
 @end

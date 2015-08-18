@@ -30,10 +30,12 @@
     NSArray *dataValue = @[@123.5,@122,@87,@101.1,@16,@60.6,@51,@44];
     NSArray *xLabelString = @[@"6-10",@"6-11",@"6-12",@"6-13",@"6-14",@"6-15",@"6-16",@"6-17"];
     
-    chart.backgroundColor = [UIColor whiteColor];
+    //chart.backgroundColor = [UIColor grayColor];
     chart.xLabelString = xLabelString;
-    chart.title = @"用电数据";
+    //chart.title = @"用电数据";
     chart.showGridding = YES;
+    chart.drawBarChart = NO;
+    chart.drawLineChart = YES;
     chart.colorOfTitle = [UIColor blackColor];
     chart.colorOfXYLabel = [UIColor lightGrayColor];
     chart.colorOfBar = [UIColor whLightBlue];

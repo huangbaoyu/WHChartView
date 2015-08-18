@@ -16,6 +16,8 @@
 @property (nonatomic, weak)     NSString *title;
 @property (nonatomic, strong)   NSArray *xLabelString;
 @property (nonatomic)           BOOL showGridding;
+@property (nonatomic)           BOOL drawBarChart;
+@property (nonatomic)           BOOL drawLineChart;
 
 - (void)setChartData:(NSArray *)chartData;
 - (void)strokeChart;
