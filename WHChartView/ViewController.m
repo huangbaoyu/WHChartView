@@ -34,8 +34,9 @@
     chart.xLabelString = xLabelString;
     //chart.title = @"用电数据";
     chart.showGridding = YES;
-    chart.drawBarChart = YES;
+    chart.drawBarChart = NO;
     chart.drawLineChart = YES;
+    chart.smoothLine = YES;
     chart.colorOfLine = [UIColor grayColor];
     chart.colorOfTitle = [UIColor blackColor];
     chart.colorOfXYLabel = [UIColor lightGrayColor];

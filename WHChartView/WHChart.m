@@ -51,10 +51,11 @@
     _colorOfTitle = [UIColor blackColor];
     _colorOfXYLabel = [UIColor blackColor];
     _colorOfLine = [UIColor grayColor];
-    
+    _kOfBezierPath = 0.25;
     _showGridding = NO;
     _drawBarChart = YES;
     _drawLineChart = NO;
+    _smoothLine = YES;
 }
 
 #pragma mark - Overwrite Setter
@@ -245,18 +246,22 @@
     chartLine.strokeColor = _colorOfLine.CGColor;
     [self.layer addSublayer:chartLine];
     
-    UIBezierPath *progressline = [UIBezierPath bezierPath];
-    [progressline setLineWidth:2.0];
-    [progressline setLineCapStyle:kCGLineCapRound];
-    [progressline setLineJoinStyle:kCGLineJoinRound];
+    chartLine.path = [self getBezierPathWithSmooth:_smoothLine].CGPath;
+
+//    UIBezierPath *progressline = [UIBezierPath bezierPath];
+//    [progressline setLineWidth:2.0];
+//    [progressline setLineCapStyle:kCGLineCapRound];
+//    [progressline setLineJoinStyle:kCGLineJoinRound];
+//    
+//    [progressline moveToPoint:CGPointMake(spaceBetweenYandLeft   + singleBarSpaceWidth/2, origin.y - barHeight * [_data[0] floatValue] / max)];
+//    
+//    for (NSInteger i = 1; i < [_data count]; ++i) {
+//        float percentage = [_data[i] floatValue] / max;
+//        [progressline addLineToPoint:CGPointMake(spaceBetweenYandLeft + singleBarSpaceWidth * (i) +singleBarSpaceWidth/2, origin.y - barHeight* percentage)];
+//    }
+//    chartLine.path = progressline.CGPath;
     
-    [progressline moveToPoint:CGPointMake(spaceBetweenYandLeft   + singleBarSpaceWidth/2, origin.y - barHeight * [_data[0] floatValue] / max)];
     
-    for (NSInteger i = 1; i < [_data count]; ++i) {
-        float percentage = [_data[i] floatValue] / max;
-        [progressline addLineToPoint:CGPointMake(spaceBetweenYandLeft + singleBarSpaceWidth * (i) +singleBarSpaceWidth/2, origin.y - barHeight* percentage)];
-    }
-    chartLine.path = progressline.CGPath;
     
     CABasicAnimation *pathAnimation = [CABasicAnimation animationWithKeyPath:@"strokeEnd"];
     pathAnimation.duration = 1;
@@ -268,5 +273,88 @@
     
     chartLine.strokeEnd = 1.0;
 }
+
+- (UIBezierPath *)getBezierPathWithSmooth:(BOOL)smooth{
+    
+    UIBezierPath *progressline = [UIBezierPath bezierPath];
+    [progressline setLineWidth:2.0];
+    [progressline setLineCapStyle:kCGLineCapRound];
+    [progressline setLineJoinStyle:kCGLineJoinRound];
+    
+//    if (_data.count == 2) {
+//        [progressline moveToPoint:[self getPointForIndex:0]];
+//        [progressline addLineToPoint:[self getPointForIndex:1]];
+//         return progressline;
+//    }
+    [progressline moveToPoint:[self getPointForIndex:0]];
+    
+    if (smooth) {
+        
+        for (NSInteger i = 1 ; i < [_data count]; ++i) {
+        
+            CGPoint currentPoint = [self getPointForIndex:i];
+            CGPoint prev1Point = [self getPointForIndex:i-1];
+            CGPoint prev2Point = [self getPointForIndex:i-2];
+            CGPoint nextPoint = [self getPointForIndex:i+1];
+            CGPoint distance;
+      
+            if(i == 1){
+                distance.x = (currentPoint.x - prev1Point.x)/2;
+                distance.y = (currentPoint.y - prev1Point.y)/2;
+            }else{
+                distance.x = (currentPoint.x - prev2Point.x)/2;
+                distance.y = (currentPoint.y - prev2Point.y)/2;
+            }
+            
+            CGPoint controlPoint1;
+            controlPoint1.x = prev1Point.x + distance.x * _kOfBezierPath;
+            controlPoint1.y = prev1Point.y + distance.y * _kOfBezierPath;
+      
+            if (i == _data.count - 1) {
+                distance.x = (currentPoint.x - prev1Point.x)/2;
+                distance.y = (currentPoint.y - prev1Point.y)/2;
+            }else{
+                distance.x = (nextPoint.x - prev1Point.x)/2;
+                distance.y = (nextPoint.y - prev1Point.y)/2;
+            }
+            
+            CGPoint controlPoint2;
+            controlPoint2.x = currentPoint.x - distance.x * _kOfBezierPath;
+            controlPoint2.y = currentPoint.y - distance.y * _kOfBezierPath;
+
+            [progressline addCurveToPoint:currentPoint controlPoint1:controlPoint1 controlPoint2:controlPoint2];
+        }
+    
+    }else{
+            for (NSInteger i = 1; i < [_data count]; ++i) {
+                
+                float percentage = [_data[i] floatValue] / max;
+                [progressline addLineToPoint:CGPointMake(spaceBetweenYandLeft + singleBarSpaceWidth * (i) +singleBarSpaceWidth/2, origin.y - barHeight* percentage)];
+            }
+    }
+    
+    return progressline;
+}
+
+- (CGPoint)getPointForIndex:(NSInteger)index
+{
+    if (index < 0 || index >= _data.count) {
+        return CGPointZero;
+    }
+    
+    float percentage = [_data[index] floatValue] / max;
+    CGPoint point = CGPointMake(spaceBetweenYandLeft + singleBarSpaceWidth * (index) +singleBarSpaceWidth/2, origin.y - barHeight* percentage);
+
+    return point;
+}
+
+
+
+
+
+
+
+
+
 
 @end

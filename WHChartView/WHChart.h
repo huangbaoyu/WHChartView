@@ -25,6 +25,10 @@
 @property (nonatomic)           BOOL drawBarChart;
 @property (nonatomic)           BOOL drawLineChart;
 
+//BazierPath
+@property (nonatomic)           BOOL smoothLine;
+@property (nonatomic)           CGFloat kOfBezierPath;
+
 - (void)setChartData:(NSArray *)chartData;
 - (void)strokeChart;
 
