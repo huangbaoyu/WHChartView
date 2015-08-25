@@ -1,25 +1,25 @@
 # WHChart
 
-![screen](https://raw.githubusercontent.com/wongkoo/WHChartView/master/Presentation/WHChartGif.gif)
+![screen{](https://raw.githubusercontent.com/wongkoo/WHChartView/master/Presentation/WHChartGif.gif)
 
 ## Usage
 
 ### Init
 
-``` objective-c
+``` objc
 WHChart *chart = [[WHChart alloc]initWithFrame:(CGRect)rect];
 ```
 
 ### Required
 
-``` objective-c
+``` objc
 - (void)setChartData:(NSArray *)chartData;
 - (void)strokeChart;
 ```
 
 ### Optional
 
-``` objective-c
+``` objc
 /***  Coordinate ***/
 @property (nonatomic, strong)   NSString *title;
 @property (nonatomic, strong)   UIColor *colorOfTitle;
@@ -53,7 +53,7 @@ WHChart *chart = [[WHChart alloc]initWithFrame:(CGRect)rect];
 
 ### Demo
 
-``` ob
+``` objc
     WHChart *chart = [[WHChart alloc]initWithFrame:CGRectMake(20, 250, self.view.bounds.size.width - 40, 200)];
     
     NSArray *dataValue = @[@123.5,@122,@87,@101.1,@16,@60.6,@51,@44,@20,@18,@98,@110,@19,@77];
