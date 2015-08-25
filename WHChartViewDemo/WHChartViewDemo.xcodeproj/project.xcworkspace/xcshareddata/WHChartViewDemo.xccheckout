@@ -5,16 +5,16 @@
 	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
 	<false/>
 	<key>IDESourceControlProjectIdentifier</key>
-	<string>588EA3D3-4810-4BBA-B0EA-0C44B3F6858F</string>
+	<string>E95A34C8-2524-4C01-9964-BF29CB7C260C</string>
 	<key>IDESourceControlProjectName</key>
-	<string>WHChartView</string>
+	<string>WHChartViewDemo</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
 		<key>26D1643E3718FA950EDD230CDC236C9A0457CE33</key>
 		<string>https://github.com/wongkoo/WHChartView.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>WHChartViewDemo/WHChartView.xcodeproj</string>
+	<string>WHChartViewDemo/WHChartViewDemo.xcodeproj</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
 		<key>26D1643E3718FA950EDD230CDC236C9A0457CE33</key>

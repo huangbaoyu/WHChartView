@@ -4,7 +4,7 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
-		<key>WHChartView.xcscheme</key>
+		<key>WHChartViewDemo.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
 			<integer>0</integer>
@@ -12,12 +12,12 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>7286FACD1B7F2AB900CE55D8</key>
+		<key>72D0D5361B8C4F5F009C70E7</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>7286FAE61B7F2AB900CE55D8</key>
+		<key>72D0D54F1B8C4F5F009C70E7</key>
 		<dict>
 			<key>primary</key>
 			<true/>

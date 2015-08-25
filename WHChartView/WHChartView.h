@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface WHChart : UIView
+@interface WHChartView : UIView
 
 /***  Coordinate ***/
 @property (nonatomic, strong)   NSString *title;

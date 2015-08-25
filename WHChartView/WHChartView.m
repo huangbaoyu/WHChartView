@@ -6,9 +6,9 @@
 //  Copyright (c) 2015年 王振辉. All rights reserved.
 //
 #import "UIColor+WHColor.h"
-#import "WHChart.h"
+#import "WHChartView.h"
 #import "WHChartBar.h"
-@interface WHChart (){
+@interface WHChartView (){
     CGPoint origin;                 //origin of coordinates
     CGPoint xEnd;                   //terminal point of X-axis
     CGPoint yEnd;                   //terminal point of Y-axis
@@ -20,15 +20,15 @@
     float spaceBetweenYandLeft;     //distance between Y-axis and left side of chart
     float spaceBetweenXandBottom;   //distance between X-axis and bottom side of chart
     
-    int   max;                      //max number of data
-    int   min;                      //min number of data
+    float   max;                      //max number of data
+    float   min;                      //min number of data
 }
 
 @property (nonatomic, strong) NSMutableArray *data;     //store data
 @property (nonatomic, strong) NSMutableArray *layers;   //store layers
 @end
 
-@implementation WHChart
+@implementation WHChartView
 
 #pragma mark - Init
 - (id)initWithFrame:(CGRect)frame
@@ -92,13 +92,13 @@
 #pragma mark - Calcalate
 - (void)findMaxAndMinNumberOfData
 {
-    max = -1000;
-    min = 1000;
+    max = -1000.0;
+    min = 1000.0;
     for (NSNumber *i in _data) {
-        if ( max < i.intValue) {
-            max = i.intValue;
-        }else if(min > i .intValue){
-            min = i.intValue;
+        if ( max < i.floatValue) {
+            max = i.floatValue;
+        }else if(min > i .floatValue){
+            min = i.floatValue;
         }
     }
 }
@@ -148,7 +148,7 @@
 {
     for (NSInteger i = 0; i<5; ++i) {
         UILabel *label = [[UILabel alloc]initWithFrame:CGRectMake(0, origin.y - 10 - barHeight*i/4, spaceBetweenYandLeft*9/10, 20)];
-        label.text =  [NSString stringWithFormat:@"%ld",max*i/4];
+        label.text =  [NSString stringWithFormat:@"%f",(float)max*i/4];
         label.textColor = _colorOfXYLabel;
         label.backgroundColor = self.backgroundColor;
         label.textAlignment = NSTextAlignmentRight;

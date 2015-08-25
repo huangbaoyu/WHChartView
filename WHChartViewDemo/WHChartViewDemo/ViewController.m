@@ -1,16 +1,16 @@
 //
 //  ViewController.m
-//  WHChartView
+//  WHChartViewDemo
 //
-//  Created by 王振辉 on 15/8/15.
+//  Created by 王振辉 on 15/8/25.
 //  Copyright (c) 2015年 王振辉. All rights reserved.
 //
 
 #import "ViewController.h"
-#import "WHChart.h"
+#import "WHChartView.h"
 #import "UIColor+WHColor.h"
 @interface ViewController (){
-    WHChart *chart;
+    WHChartView *chart;
 }
 
 @end
@@ -26,9 +26,9 @@
     
 }
 
-- (WHChart *)chart1
+- (WHChartView *)chart1
 {
-    chart = [[WHChart alloc]initWithFrame:CGRectMake(20, 50, self.view.bounds.size.width - 40, 200)];
+    chart = [[WHChartView alloc]initWithFrame:CGRectMake(20, 50, self.view.bounds.size.width - 40, 200)];
     
     NSArray *dataValue = @[@123.5,@122,@87,@101.1,@16,@60.6,@51,@44,@20,@18,@98,@110,@19,@77];
     NSArray *xLabelString = @[@"6-10",@"6-11",@"6-12",@"6-13",@"6-14",@"6-15",@"6-16",@"6-17",@"6-12",@"6-13",@"6-14",@"6-15",@"6-16",@"6-17"];
@@ -54,9 +54,9 @@
     return chart;
 }
 
-- (WHChart *)chart2
+- (WHChartView *)chart2
 {
-    chart = [[WHChart alloc]initWithFrame:CGRectMake(20, 250, self.view.bounds.size.width - 40, 200)];
+    chart = [[WHChartView alloc]initWithFrame:CGRectMake(20, 250, self.view.bounds.size.width - 40, 200)];
     
     NSArray *dataValue = @[@123.5,@122,@87,@101.1,@16,@60.6,@51,@44,@20,@18,@98,@110,@19,@77];
     NSArray *xLabelString = @[@"6-10",@"6-11",@"6-12",@"6-13",@"6-14",@"6-15",@"6-16",@"6-17",@"6-12",@"6-13",@"6-14",@"6-15",@"6-16",@"6-17"];
@@ -82,9 +82,9 @@
     return chart;
 }
 
-- (WHChart *)chart3
+- (WHChartView *)chart3
 {
-    chart = [[WHChart alloc]initWithFrame:CGRectMake(20, 450, self.view.bounds.size.width - 40, 200)];
+    chart = [[WHChartView alloc]initWithFrame:CGRectMake(20, 450, self.view.bounds.size.width - 40, 200)];
     
     NSArray *dataValue = @[@123.5,@122,@87,@101.1,@16,@60.6,@51,@44,@20,@18,@98,@110,@19,@77];
     NSArray *xLabelString = @[@"6-10",@"6-11",@"6-12",@"6-13",@"6-14",@"6-15",@"6-16",@"6-17",@"6-12",@"6-13",@"6-14",@"6-15",@"6-16",@"6-17"];
@@ -116,3 +116,4 @@
 }
 
 @end
+

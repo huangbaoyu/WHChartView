@@ -3,11 +3,19 @@
 ![screen{](https://raw.githubusercontent.com/wongkoo/WHChartView/master/Presentation/WHChartGif.gif)
 
 ## Usage
+###CocoaPods
+CocoaPods is the recommended way to use EAIntroView in your project.    
+
+- Simply add this line to your **Podfile**: 
+`pod 'WHChartView'`
+- Run `pod install`.    
+
+Include with `#import "WHChartView"` to use it wherever you need.
 
 ### Init
 
 ``` objc
-WHChart *chart = [[WHChart alloc]initWithFrame:(CGRect)rect];
+WHChartView *chart = [[WHChartView alloc]initWithFrame:(CGRect)rect];
 ```
 
 ### Required
@@ -54,17 +62,17 @@ WHChart *chart = [[WHChart alloc]initWithFrame:(CGRect)rect];
 ### Demo
 
 ``` objc
-    WHChart *chart = [[WHChart alloc]initWithFrame:CGRectMake(20, 250, self.view.bounds.size.width - 40, 200)];
+    WHChart *chart = [[WHChartView alloc]initWithFrame:CGRectMake(20, 50, self.view.bounds.size.width - 40, 200)];
     
     NSArray *dataValue = @[@123.5,@122,@87,@101.1,@16,@60.6,@51,@44,@20,@18,@98,@110,@19,@77];
     NSArray *xLabelString = @[@"6-10",@"6-11",@"6-12",@"6-13",@"6-14",@"6-15",@"6-16",@"6-17",@"6-12",@"6-13",@"6-14",@"6-15",@"6-16",@"6-17"];
     
-    chart.backgroundColor = [UIColor whiteColor];
+    //chart.backgroundColor = [UIColor grayColor];
     chart.xLabelString = xLabelString;
-    chart.title = @"Line Only";
+    chart.title = @"Bar and Line";
     chart.showGridding = YES;
     chart.showGradientColor = YES;
-    chart.drawBarChart = NO;
+    chart.drawBarChart = YES;
     chart.drawLineChart = YES;
     chart.smoothLine = YES;
     chart.colorOfAxis = [UIColor whClouds];

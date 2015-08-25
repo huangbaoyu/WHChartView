@@ -14,10 +14,10 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "7286FACD1B7F2AB900CE55D8"
-               BuildableName = "WHChartView.app"
-               BlueprintName = "WHChartView"
-               ReferencedContainer = "container:WHChartView.xcodeproj">
+               BlueprintIdentifier = "72D0D5361B8C4F5F009C70E7"
+               BuildableName = "WHChartViewDemo.app"
+               BlueprintName = "WHChartViewDemo"
+               ReferencedContainer = "container:WHChartViewDemo.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
          <BuildActionEntry
@@ -28,10 +28,10 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "7286FAE61B7F2AB900CE55D8"
-               BuildableName = "WHChartViewTests.xctest"
-               BlueprintName = "WHChartViewTests"
-               ReferencedContainer = "container:WHChartView.xcodeproj">
+               BlueprintIdentifier = "72D0D54F1B8C4F5F009C70E7"
+               BuildableName = "WHChartViewDemoTests.xctest"
+               BlueprintName = "WHChartViewDemoTests"
+               ReferencedContainer = "container:WHChartViewDemo.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -46,20 +46,20 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "7286FAE61B7F2AB900CE55D8"
-               BuildableName = "WHChartViewTests.xctest"
-               BlueprintName = "WHChartViewTests"
-               ReferencedContainer = "container:WHChartView.xcodeproj">
+               BlueprintIdentifier = "72D0D54F1B8C4F5F009C70E7"
+               BuildableName = "WHChartViewDemoTests.xctest"
+               BlueprintName = "WHChartViewDemoTests"
+               ReferencedContainer = "container:WHChartViewDemo.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "7286FACD1B7F2AB900CE55D8"
-            BuildableName = "WHChartView.app"
-            BlueprintName = "WHChartView"
-            ReferencedContainer = "container:WHChartView.xcodeproj">
+            BlueprintIdentifier = "72D0D5361B8C4F5F009C70E7"
+            BuildableName = "WHChartViewDemo.app"
+            BlueprintName = "WHChartViewDemo"
+            ReferencedContainer = "container:WHChartViewDemo.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
    </TestAction>
@@ -76,10 +76,10 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "7286FACD1B7F2AB900CE55D8"
-            BuildableName = "WHChartView.app"
-            BlueprintName = "WHChartView"
-            ReferencedContainer = "container:WHChartView.xcodeproj">
+            BlueprintIdentifier = "72D0D5361B8C4F5F009C70E7"
+            BuildableName = "WHChartViewDemo.app"
+            BlueprintName = "WHChartViewDemo"
+            ReferencedContainer = "container:WHChartViewDemo.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -95,10 +95,10 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "7286FACD1B7F2AB900CE55D8"
-            BuildableName = "WHChartView.app"
-            BlueprintName = "WHChartView"
-            ReferencedContainer = "container:WHChartView.xcodeproj">
+            BlueprintIdentifier = "72D0D5361B8C4F5F009C70E7"
+            BuildableName = "WHChartViewDemo.app"
+            BlueprintName = "WHChartViewDemo"
+            ReferencedContainer = "container:WHChartViewDemo.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>
