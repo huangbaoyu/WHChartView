@@ -61,7 +61,7 @@
     NSArray *dataValue = @[@123.5,@122,@87,@101.1,@16,@60.6,@51,@44,@20,@18,@98,@110,@19,@77];
     NSArray *xLabelString = @[@"6-10",@"6-11",@"6-12",@"6-13",@"6-14",@"6-15",@"6-16",@"6-17",@"6-12",@"6-13",@"6-14",@"6-15",@"6-16",@"6-17"];
     
-    //chart.backgroundColor = [UIColor grayColor];
+    chart.backgroundColor = [UIColor whiteColor];
     chart.xLabelString = xLabelString;
     chart.title = @"Line Only";
     chart.showGridding = YES;
