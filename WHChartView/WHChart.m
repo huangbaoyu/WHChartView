@@ -5,18 +5,21 @@
 //  Created by 王振辉 on 15/8/15.
 //  Copyright (c) 2015年 王振辉. All rights reserved.
 //
-
+#import "UIColor+WHColor.h"
 #import "WHChart.h"
 #import "WHChartBar.h"
 @interface WHChart (){
     CGPoint origin;                 //origin of coordinates
     CGPoint xEnd;                   //terminal point of X-axis
     CGPoint yEnd;                   //terminal point of Y-axis
+    
     float singleBarSpaceWidth;      //Width of space where bar is in
     float barWidth;                 //Width of bar
     float barHeight;                //height of bar
+    
     float spaceBetweenYandLeft;     //distance between Y-axis and left side of chart
     float spaceBetweenXandBottom;   //distance between X-axis and bottom side of chart
+    
     int   max;                      //max number of data
     int   min;                      //min number of data
 }
@@ -47,15 +50,29 @@
     origin = CGPointMake(spaceBetweenYandLeft, self.frame.size.height - spaceBetweenXandBottom);
     
     self.backgroundColor = [UIColor whiteColor];
-    _colorOfBar = [UIColor greenColor];
+    
+    _title = nil;
     _colorOfTitle = [UIColor blackColor];
     _colorOfXYLabel = [UIColor blackColor];
-    _colorOfLine = [UIColor grayColor];
-    _kOfBezierPath = 0.25;
+    
+    _colorOfAxis = [UIColor whSilver];
     _showGridding = NO;
+    _colorOfGridding = _colorOfAxis;
+    
     _drawBarChart = YES;
+    _colorOfBar = [UIColor greenColor];
+    
     _drawLineChart = NO;
+    _colorOfLine = [UIColor grayColor];
+    
     _smoothLine = YES;
+    _kOfBezierPath = 0.25;
+    
+    _showGradientColor = YES;
+    _gradientColors = [NSArray arrayWithObjects:(id)[UIColor whGreen].CGColor ,(id)[UIColor whOrange].CGColor,(id)[UIColor whAlizarin].CGColor, nil];
+    _gradientStartPoint = CGPointMake(0.5, 0);
+    _gradientEndPoint = CGPointMake(0.5, 1);
+    _gradientLocations = @[@0.2,@0.5,@0.9 ];
 }
 
 #pragma mark - Overwrite Setter
@@ -171,7 +188,8 @@
 - (void)drawAxis
 {
     CGContextRef context = UIGraphicsGetCurrentContext();
-    CGContextSetRGBStrokeColor(context, 127.0/255.0, 140.0/255.0, 141.0/255.0, 1); //rgba(127, 140, 141,1.0)
+    const CGFloat* colors = CGColorGetComponents(_colorOfAxis.CGColor);
+    CGContextSetRGBStrokeColor(context, colors[0], colors[1], colors[2], colors[3]);
     
     CGMutablePathRef path = CGPathCreateMutable();
     CGPathMoveToPoint(path, NULL, xEnd.x, xEnd.y);
@@ -191,7 +209,9 @@
     }
     
     CGContextRef context = UIGraphicsGetCurrentContext();
-     CGContextSetRGBStrokeColor(context, 189.0/255.0, 195.0/255.0, 199.0/255.0, 0.8);//rgb(189, 195, 199)
+    const CGFloat* colors = CGColorGetComponents(_colorOfGridding.CGColor);
+    CGContextSetRGBStrokeColor(context, colors[0], colors[1], colors[2], colors[3]);
+
     for (NSInteger i = 1; i<5 ; ++i) {
         CGMutablePathRef path = CGPathCreateMutable();
         CGPathMoveToPoint(path, NULL, origin.x, origin.y - barHeight*i/4);
@@ -246,22 +266,18 @@
     chartLine.strokeColor = _colorOfLine.CGColor;
     [self.layer addSublayer:chartLine];
     
+    if (_showGradientColor) {
+        CAGradientLayer *gradientLayer = [CAGradientLayer layer];
+        gradientLayer.frame = CGRectMake(0, 0, self.frame.size.width, self.frame.size.height);
+        [gradientLayer setColors:_gradientColors];
+        [gradientLayer setLocations:_gradientLocations];
+        [gradientLayer setStartPoint:_gradientStartPoint];
+        [gradientLayer setEndPoint:_gradientEndPoint];
+        [gradientLayer setMask:chartLine];
+        [self.layer addSublayer:gradientLayer];
+    }
+    
     chartLine.path = [self getBezierPathWithSmooth:_smoothLine].CGPath;
-
-//    UIBezierPath *progressline = [UIBezierPath bezierPath];
-//    [progressline setLineWidth:2.0];
-//    [progressline setLineCapStyle:kCGLineCapRound];
-//    [progressline setLineJoinStyle:kCGLineJoinRound];
-//    
-//    [progressline moveToPoint:CGPointMake(spaceBetweenYandLeft   + singleBarSpaceWidth/2, origin.y - barHeight * [_data[0] floatValue] / max)];
-//    
-//    for (NSInteger i = 1; i < [_data count]; ++i) {
-//        float percentage = [_data[i] floatValue] / max;
-//        [progressline addLineToPoint:CGPointMake(spaceBetweenYandLeft + singleBarSpaceWidth * (i) +singleBarSpaceWidth/2, origin.y - barHeight* percentage)];
-//    }
-//    chartLine.path = progressline.CGPath;
-    
-    
     
     CABasicAnimation *pathAnimation = [CABasicAnimation animationWithKeyPath:@"strokeEnd"];
     pathAnimation.duration = 1;
@@ -281,11 +297,6 @@
     [progressline setLineCapStyle:kCGLineCapRound];
     [progressline setLineJoinStyle:kCGLineJoinRound];
     
-//    if (_data.count == 2) {
-//        [progressline moveToPoint:[self getPointForIndex:0]];
-//        [progressline addLineToPoint:[self getPointForIndex:1]];
-//         return progressline;
-//    }
     [progressline moveToPoint:[self getPointForIndex:0]];
     
     if (smooth) {

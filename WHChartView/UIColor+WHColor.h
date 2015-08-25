@@ -12,5 +12,12 @@
 
 + (instancetype)whLightBlue;
 + (instancetype)whBlue;
++ (instancetype)whGreen;
++ (instancetype)whLightGreen;
++ (instancetype)whSilver;
++ (instancetype)whClouds;
++ (instancetype)whAlizarin;
++ (instancetype)whCarrot;
++ (instancetype)whOrange;
 
 @end

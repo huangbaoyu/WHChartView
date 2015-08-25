@@ -20,4 +20,39 @@
     //rgba(41, 128, 185,1.0)
 }
 
++ (instancetype)whGreen{
+    return [UIColor colorWithRed:39.0/255.0 green:174.0/255.0 blue:96.0/255.0 alpha:1.0];
+    //rgb(39, 174, 96)
+}
+
++ (instancetype)whLightGreen{
+    return [UIColor colorWithRed:46.0/255.0 green:204.0/255.0 blue:113.0/255.0 alpha:1.0];
+    //rgb(46, 204, 113)
+}
+
++ (instancetype)whSilver{
+    return [UIColor colorWithRed:189.0/255.0 green:195.0/255.0 blue:199.0/255.0 alpha:1.0];
+    //rgb(189, 195, 199)
+}
+
++ (instancetype)whClouds{
+    return [UIColor colorWithRed:236.0/255.0 green:240.0/255.0 blue:241.0/255.0 alpha:1.0];
+    //rgb(236, 240, 241)
+}
+
++ (instancetype)whAlizarin{
+    return [UIColor colorWithRed:231.0/255.0 green:76.0/255.0 blue:60.0/255.0 alpha:1.0];
+    //rgb(231, 76, 60)
+    
+}
+
++ (instancetype)whCarrot{
+    return [UIColor colorWithRed:230.0/255.0 green:126.0/255.0 blue:34.0/255.0 alpha:1.0];
+    //rgb(230, 126, 34)
+}
+
++ (instancetype)whOrange{
+    return [UIColor colorWithRed:243.0/255.0 green:156.0/255.0 blue:18.0/255.0 alpha:1.0];
+    //rgb(243, 156, 18)
+}
 @end
