@@ -103,7 +103,7 @@
     }
 }
 
-#pragma mark - Drwa
+#pragma mark - Draw
 - (void)drawRect:(CGRect)rect
 {
     if ([_data count] > 0) {
