@@ -20,8 +20,8 @@
     float spaceBetweenYandLeft;     //distance between Y-axis and left side of chart
     float spaceBetweenXandBottom;   //distance between X-axis and bottom side of chart
     
-    float   max;                      //max number of data
-    float   min;                      //min number of data
+    int   max;                      //max number of data
+    int   min;                      //min number of data
 }
 
 @property (nonatomic, strong) NSMutableArray *data;     //store data
@@ -146,9 +146,9 @@
 
 - (void)drawYLabel
 {
-    for (NSInteger i = 0; i<5; ++i) {
+    for (int i = 0; i<5; ++i) {
         UILabel *label = [[UILabel alloc]initWithFrame:CGRectMake(0, origin.y - 10 - barHeight*i/4, spaceBetweenYandLeft*9/10, 20)];
-        label.text =  [NSString stringWithFormat:@"%f",(float)max*i/4];
+        label.text =  [NSString stringWithFormat:@"%d",(int)max*i/4];
         label.textColor = _colorOfXYLabel;
         label.backgroundColor = self.backgroundColor;
         label.textAlignment = NSTextAlignmentRight;
