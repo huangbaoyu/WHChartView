@@ -16,8 +16,8 @@ Pod::Spec.new do |s|
   #
 
   s.name         = "WHChartView"
-  s.version      = "1.0.2"
-  s.summary      = "WHChartView can draw histogram and curve chart."
+  s.version      = "1.0.3"
+  s.summary      = "WHChartView can draw histogram and curve chart. It's cool. XD"
 
   s.description  = <<-DESC
                    To improve my iOS skills and make it useful.
@@ -79,7 +79,7 @@ Pod::Spec.new do |s|
   #  Supports git, hg, bzr, svn and HTTP.
   #
 
-  s.source       = { :git => "https://github.com/wongkoo/WHChartView.git", :tag => "1.0.2" }
+  s.source       = { :git => "https://github.com/wongkoo/WHChartView.git", :tag => "1.0.3" }
 
 
   # ――― Source Code ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #

@@ -19,5 +19,6 @@
 + (instancetype)whAlizarin;
 + (instancetype)whCarrot;
 + (instancetype)whOrange;
++ (instancetype)whAsbestos;
 
 @end
