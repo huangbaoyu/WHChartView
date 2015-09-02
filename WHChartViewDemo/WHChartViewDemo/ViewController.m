@@ -44,7 +44,7 @@
     chart.colorOfAxis = [UIColor whClouds];
     chart.colorOfGridding = [UIColor whClouds];
     chart.colorOfLine = [UIColor grayColor];
-    chart.colorOfTitle = [UIColor blackColor];
+    //chart.colorOfTitle = [UIColor blackColor];
     chart.colorOfXYLabel = [UIColor lightGrayColor];
     chart.colorOfBar = [UIColor whLightBlue];
     
@@ -58,15 +58,16 @@
 {
     chart = [[WHChartView alloc]initWithFrame:CGRectMake(20, 250, self.view.bounds.size.width - 40, 200)];
     
-    NSArray *dataValue = @[@123.5,@122,@87,@101.1,@16,@60.6,@51,@44,@20,@18,@98,@110,@19,@77];
+    NSArray *dataValue = @[@123.5,@19,@80,@110,@190,@189,@170,@100,@122,@87,@101.1,@16,@60.6,@51,@44,@20,@18,@98,@110,@19,@77];
     NSArray *xLabelString = @[@"6-10",@"6-11",@"6-12",@"6-13",@"6-14",@"6-15",@"6-16",@"6-17",@"6-12",@"6-13",@"6-14",@"6-15",@"6-16",@"6-17"];
     
     chart.backgroundColor = [UIColor whiteColor];
     chart.xLabelString = xLabelString;
     chart.title = @"Line Only";
     chart.showGridding = YES;
+    chart.showXLabel = NO;
     chart.showGradientColor = YES;
-    chart.drawBarChart = NO;
+    chart.drawBarChart = YES;
     chart.drawLineChart = YES;
     chart.smoothLine = YES;
     chart.colorOfAxis = [UIColor whClouds];

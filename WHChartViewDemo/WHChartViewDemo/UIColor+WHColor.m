@@ -55,4 +55,9 @@
     return [UIColor colorWithRed:243.0/255.0 green:156.0/255.0 blue:18.0/255.0 alpha:1.0];
     //rgb(243, 156, 18)
 }
+
++ (instancetype)whAsbestos{
+    return [UIColor colorWithRed:127.0/255.0 green:140.0/255.0 blue:141.0/255.0 alpha:1.0];
+    //rgb(127, 140, 141)
+}
 @end

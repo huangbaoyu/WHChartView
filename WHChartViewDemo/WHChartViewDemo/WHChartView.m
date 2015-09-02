@@ -52,15 +52,16 @@
     self.backgroundColor = [UIColor whiteColor];
     
     _title = nil;
-    _colorOfTitle = [UIColor blackColor];
-    _colorOfXYLabel = [UIColor blackColor];
+    _colorOfTitle = [UIColor whAsbestos];
+    _colorOfXYLabel = [UIColor lightGrayColor];
     
     _colorOfAxis = [UIColor whSilver];
     _showGridding = NO;
     _colorOfGridding = _colorOfAxis;
+    _showXLabel = YES;
     
     _drawBarChart = YES;
-    _colorOfBar = [UIColor greenColor];
+    _colorOfBar = [UIColor whLightBlue];
     
     _drawLineChart = NO;
     _colorOfLine = [UIColor grayColor];
@@ -122,6 +123,10 @@
 
 - (void)drawXLabel
 {
+    if (!_showXLabel) {
+        return;
+    }
+    
     if (!_xLabelString || [_xLabelString count]!=[_data count]) {
         return;
     }

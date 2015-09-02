@@ -17,6 +17,7 @@
 @property (nonatomic, strong)   UIColor *colorOfAxis;
 @property (nonatomic, strong)   UIColor *colorOfGridding;
 @property (nonatomic)           BOOL showGridding;
+@property (nonatomic)           BOOL showXLabel;
 @property (nonatomic, strong)   NSArray *xLabelString;  //Data of XLabel
 
 
