@@ -20,8 +20,9 @@
     float spaceBetweenYandLeft;     //distance between Y-axis and left side of chart
     float spaceBetweenXandBottom;   //distance between X-axis and bottom side of chart
     
-    int   max;                      //max number of data
-    int   min;                      //min number of data
+    float   maxOfFloatData;                      //max number of data
+    float   minOfFloatData;                      //min number of data
+    int     maxOfIntData;
 }
 
 @property (nonatomic, strong) NSMutableArray *data;     //store data
@@ -52,18 +53,20 @@
     self.backgroundColor = [UIColor whiteColor];
     
     _title = nil;
-    _colorOfTitle = [UIColor blackColor];
-    _colorOfXYLabel = [UIColor blackColor];
+    _colorOfTitle = [UIColor whAsbestos];
+    _colorOfXYLabel = [UIColor lightGrayColor];
     
     _colorOfAxis = [UIColor whSilver];
     _showGridding = NO;
     _colorOfGridding = _colorOfAxis;
+    _showXLabel = YES;
     
     _drawBarChart = YES;
-    _colorOfBar = [UIColor greenColor];
+    _colorOfBar = [UIColor whLightBlue];
     
     _drawLineChart = NO;
     _colorOfLine = [UIColor grayColor];
+    _lineWidth = 2.0;
     
     _smoothLine = YES;
     _kOfBezierPath = 0.25;
@@ -92,14 +95,20 @@
 #pragma mark - Calcalate
 - (void)findMaxAndMinNumberOfData
 {
-    max = -1000.0;
-    min = 1000.0;
+    maxOfFloatData = -1000.0;
+    minOfFloatData = 1000.0;
     for (NSNumber *i in _data) {
-        if ( max < i.floatValue) {
-            max = i.floatValue;
-        }else if(min > i .floatValue){
-            min = i.floatValue;
+        if ( maxOfFloatData < i.floatValue) {
+            maxOfFloatData = i.floatValue;
+        }else if(minOfFloatData > i .floatValue){
+            minOfFloatData = i.floatValue;
         }
+    }
+    
+    if ( (maxOfFloatData - (int)maxOfFloatData) == 0) {
+        maxOfIntData = (int)maxOfFloatData;
+    }else{
+        maxOfIntData = (int)maxOfFloatData + 1;
     }
 }
 
@@ -122,6 +131,10 @@
 
 - (void)drawXLabel
 {
+    if (!_showXLabel) {
+        return;
+    }
+    
     if (!_xLabelString || [_xLabelString count]!=[_data count]) {
         return;
     }
@@ -148,7 +161,7 @@
 {
     for (int i = 0; i<5; ++i) {
         UILabel *label = [[UILabel alloc]initWithFrame:CGRectMake(0, origin.y - 10 - barHeight*i/4, spaceBetweenYandLeft*9/10, 20)];
-        label.text =  [NSString stringWithFormat:@"%d",(int)max*i/4];
+        label.text =  [NSString stringWithFormat:@"%d",(int)maxOfIntData*i/4];
         label.textColor = _colorOfXYLabel;
         label.backgroundColor = self.backgroundColor;
         label.textAlignment = NSTextAlignmentRight;
@@ -240,7 +253,7 @@
 - (void)drawBarInChart
 {
     for (NSInteger i = 0; i < [_data count]; ++i) {
-        float percentage = [_data[i] floatValue] / max;
+        float percentage = [_data[i] floatValue] / maxOfIntData;
         
         WHChartBar *bar = [[WHChartBar alloc]initWithFrame:CGRectMake(
                                                                       spaceBetweenYandLeft + i * singleBarSpaceWidth +(singleBarSpaceWidth-barWidth)/2,
@@ -261,7 +274,7 @@
     chartLine.lineCap = kCALineCapRound;
     chartLine.lineJoin = kCALineJoinBevel;
     chartLine.fillColor   = [[UIColor clearColor] CGColor];
-    chartLine.lineWidth  = 2.0;
+    chartLine.lineWidth  = _lineWidth;
     chartLine.strokeEnd  = 0.0;
     chartLine.strokeColor = _colorOfLine.CGColor;
     [self.layer addSublayer:chartLine];
@@ -293,7 +306,7 @@
 - (UIBezierPath *)getBezierPathWithSmooth:(BOOL)smooth{
     
     UIBezierPath *progressline = [UIBezierPath bezierPath];
-    [progressline setLineWidth:2.0];
+    [progressline setLineWidth:_lineWidth];
     [progressline setLineCapStyle:kCGLineCapRound];
     [progressline setLineJoinStyle:kCGLineJoinRound];
     
@@ -339,7 +352,7 @@
     }else{
             for (NSInteger i = 1; i < [_data count]; ++i) {
                 
-                float percentage = [_data[i] floatValue] / max;
+                float percentage = [_data[i] floatValue] / maxOfIntData;
                 [progressline addLineToPoint:CGPointMake(spaceBetweenYandLeft + singleBarSpaceWidth * (i) +singleBarSpaceWidth/2, origin.y - barHeight* percentage)];
             }
     }
@@ -353,7 +366,7 @@
         return CGPointZero;
     }
     
-    float percentage = [_data[index] floatValue] / max;
+    float percentage = [_data[index] floatValue] / maxOfIntData;
     CGPoint point = CGPointMake(spaceBetweenYandLeft + singleBarSpaceWidth * (index) +singleBarSpaceWidth/2, origin.y - barHeight* percentage);
 
     return point;

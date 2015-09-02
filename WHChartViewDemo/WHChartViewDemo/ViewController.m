@@ -46,7 +46,7 @@
     chart.colorOfLine = [UIColor grayColor];
     //chart.colorOfTitle = [UIColor blackColor];
     chart.colorOfXYLabel = [UIColor lightGrayColor];
-    chart.colorOfBar = [UIColor whLightBlue];
+    chart.colorOfBar = [UIColor whAsbestos];
     
     [chart setChartData:dataValue];
     [chart strokeChart];
@@ -58,26 +58,28 @@
 {
     chart = [[WHChartView alloc]initWithFrame:CGRectMake(20, 250, self.view.bounds.size.width - 40, 200)];
     
-    NSArray *dataValue = @[@123.5,@19,@80,@110,@190,@189,@170,@100,@122,@87,@101.1,@16,@60.6,@51,@44,@20,@18,@98,@110,@19,@77];
-    NSArray *xLabelString = @[@"6-10",@"6-11",@"6-12",@"6-13",@"6-14",@"6-15",@"6-16",@"6-17",@"6-12",@"6-13",@"6-14",@"6-15",@"6-16",@"6-17"];
+    NSMutableArray *data = [NSMutableArray arrayWithCapacity:140];
+    for(int i=0;i<140;i++) {
+        float r = rand()%100 /100.0  + 7.0 - i/20.0;
+        [data addObject:[NSNumber numberWithFloat:r]];
+    }
     
     chart.backgroundColor = [UIColor whiteColor];
-    chart.xLabelString = xLabelString;
     chart.title = @"Line Only";
     chart.showGridding = YES;
     chart.showXLabel = NO;
     chart.showGradientColor = YES;
-    chart.drawBarChart = YES;
+    chart.drawBarChart = NO;
     chart.drawLineChart = YES;
     chart.smoothLine = YES;
     chart.colorOfAxis = [UIColor whClouds];
     chart.colorOfGridding = [UIColor whClouds];
     chart.colorOfLine = [UIColor grayColor];
-    chart.colorOfTitle = [UIColor blackColor];
-    chart.colorOfXYLabel = [UIColor lightGrayColor];
-    chart.colorOfBar = [UIColor whLightBlue];
+    chart.lineWidth = 1.0;
+
+    chart.gradientColors = [NSArray arrayWithObjects:(id)[UIColor whAlizarin].CGColor ,(id)[UIColor whCarrot].CGColor,(id)[UIColor whLightBlue].CGColor, nil];
     
-    [chart setChartData:dataValue];
+    [chart setChartData:data];
     [chart strokeChart];
     
     return chart;
@@ -101,7 +103,7 @@
     chart.colorOfAxis = [UIColor whClouds];
     chart.colorOfGridding = [UIColor whClouds];
     chart.colorOfLine = [UIColor grayColor];
-    chart.colorOfTitle = [UIColor blackColor];
+   // chart.colorOfTitle = [UIColor blackColor];
     chart.colorOfXYLabel = [UIColor lightGrayColor];
     chart.colorOfBar = [UIColor whLightBlue];
     

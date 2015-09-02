@@ -28,6 +28,7 @@
 
 /***  Line in Chart ***/
 @property (nonatomic)           BOOL drawLineChart;
+@property (nonatomic)           CGFloat lineWidth;
 @property (nonatomic, strong)   UIColor *colorOfLine;
 
 @property (nonatomic)           BOOL smoothLine;        //BazierPath

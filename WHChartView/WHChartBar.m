@@ -53,14 +53,11 @@
                                 [UIColor clearColor]:labelBackGroundColor;
         
         label.textAlignment = NSTextAlignmentCenter;
-        if (_labelValue == (int)_labelValue) {
-            label.text = [NSString stringWithFormat:@"%d",(int)_labelValue];
-        }else{
-            label.text = [NSString stringWithFormat:@"%.1f",_labelValue];
-        }
+        
+        label.text = [NSString stringWithFormat:@"%d",(int)_labelValue];
 
-        float fountSize =3 + self.frame.size.width /label.text.length;
-        label.font = [UIFont systemFontOfSize:fountSize > 14 ? 13:fountSize];
+        CGFloat fountSize = (self.frame.size.width / label.text.length) * 2 - 3;
+        label.font = [UIFont systemFontOfSize: (fountSize > 14) ? 13:fountSize];
         
         label.translatesAutoresizingMaskIntoConstraints = NO;
         [self addSubview:label];
