@@ -52,12 +52,15 @@ WHChartView *chart = [[WHChartView alloc]initWithFrame:(CGRect)rect];
 /***  Bar in Chart ***/
 @property (nonatomic)           BOOL drawBarChart;
 @property (nonatomic, strong)   UIColor *colorOfBar;
+@property (nonatomic, strong)   UIColor *colorOfUnusedPartOfBar;
+@property (nonatomic)           CFTimeInterval animationDurationOfBar; //animationDuration
 
 
 /***  Line in Chart ***/
 @property (nonatomic)           BOOL drawLineChart;
 @property (nonatomic)           CGFloat lineWidth;
 @property (nonatomic, strong)   UIColor *colorOfLine;
+@property (nonatomic)           CFTimeInterval animationDurationOfLine;
 
 @property (nonatomic)           BOOL smoothLine;        //BazierPath
 @property (nonatomic)           CGFloat kOfBezierPath;

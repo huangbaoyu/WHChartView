@@ -10,10 +10,13 @@
 
 @interface WHChartBar : UIView
 
-@property (nonatomic, strong)   UIColor *backgroundColorofChart;
-@property (nonatomic, strong)   UIColor *colorofBar;
+@property (nonatomic, strong)   UIColor *backgroundColorOfChart;
+@property (nonatomic, strong)   UIColor *colorOfBar;
+@property (nonatomic, strong)   UIColor *colorOfUnusedPart;
+
 @property (nonatomic, strong)   CAShapeLayer *bar;
 @property (nonatomic)           float percentage; //      percentage = (bar's height) / (self.view's height)
 @property (nonatomic)           float labelValue;
+@property (nonatomic)           CFTimeInterval animationDuration;
 
 @end

@@ -63,6 +63,9 @@
     
     _drawBarChart = YES;
     _colorOfBar = [UIColor whLightBlue];
+    _colorOfUnusedPartOfBar = [UIColor clearColor];
+    _animationDurationOfBar = 1.5;
+    _animationDurationOfLine = 1.0;
     
     _drawLineChart = NO;
     _colorOfLine = [UIColor grayColor];
@@ -261,8 +264,10 @@
                                                                       barWidth,
                                                                       barHeight)];
         bar.labelValue = [_data[i] floatValue];
-        bar.backgroundColorofChart = self.backgroundColor;
-        bar.colorofBar = _colorOfBar;
+        bar.backgroundColorOfChart = self.backgroundColor;
+        bar.colorOfBar = _colorOfBar;
+        bar.colorOfUnusedPart = _colorOfUnusedPartOfBar;
+        bar.animationDuration = _animationDurationOfBar;
         bar.percentage = percentage;
         [self addSubview:bar];
     }
@@ -293,7 +298,7 @@
     chartLine.path = [self getBezierPathWithSmooth:_smoothLine].CGPath;
     
     CABasicAnimation *pathAnimation = [CABasicAnimation animationWithKeyPath:@"strokeEnd"];
-    pathAnimation.duration = 1;
+    pathAnimation.duration = _animationDurationOfLine;
     pathAnimation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
     pathAnimation.fromValue = [NSNumber numberWithFloat:0.0f];
     pathAnimation.toValue = [NSNumber numberWithFloat:1.0f];

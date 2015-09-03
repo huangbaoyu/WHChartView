@@ -104,6 +104,7 @@
     chart.colorOfGridding = [UIColor whClouds];
     chart.colorOfLine = [UIColor grayColor];
    // chart.colorOfTitle = [UIColor blackColor];
+    chart.colorOfUnusedPartOfBar = [UIColor grayColor];
     chart.colorOfXYLabel = [UIColor lightGrayColor];
     chart.colorOfBar = [UIColor whLightBlue];
     

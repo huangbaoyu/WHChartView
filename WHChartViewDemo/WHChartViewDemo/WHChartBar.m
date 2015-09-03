@@ -21,13 +21,16 @@
     self = [super initWithFrame:frame];
     if (self) {
         //_backgroundColorofBar = [UIColor clearColor];
+        
         self.backgroundColor = [UIColor clearColor];
-        _colorofBar = [UIColor whLightBlue];
+        _colorOfBar = [UIColor whLightBlue];
+        _colorOfUnusedPart = [UIColor clearColor];
+        _animationDuration = 1.5;
         
         _bar = [CAShapeLayer layer];
         _bar.lineWidth = self.frame.size.width;
         _bar.strokeEnd = 0.0;
-        _bar.strokeColor = _colorofBar.CGColor;
+        _bar.strokeColor = _colorOfBar.CGColor;
         labelHasShown = NO;
         
         self.clipsToBounds = YES;
@@ -46,7 +49,7 @@
 - (void)labelTapped:(id)sender{
     if (!labelHasShown) {
         label = [[UILabel alloc]init];
-        UIColor *labelBackGroundColor = [_backgroundColorofChart colorWithAlphaComponent:0.7];
+        UIColor *labelBackGroundColor = [_backgroundColorOfChart colorWithAlphaComponent:0.7];
         
         label.backgroundColor =
                                 (_percentage >= (self.frame.size.height - self.frame.size.width)/self.frame.size.height) ?
@@ -116,7 +119,7 @@
 {
     //Draw Background
     CGContextRef context = UIGraphicsGetCurrentContext();
-    CGContextSetFillColorWithColor(context, [UIColor clearColor].CGColor);
+    CGContextSetFillColorWithColor(context, _colorOfUnusedPart.CGColor);
     CGContextFillRect(context, rect);
     
 }
@@ -126,7 +129,7 @@
     if (!percentage) {
         return;
     }
-    _bar.strokeColor = _colorofBar.CGColor;
+    _bar.strokeColor = _colorOfBar.CGColor;
     _percentage = percentage;
     
     UIBezierPath *path = [UIBezierPath bezierPath];
@@ -137,7 +140,7 @@
     _bar.path = path.CGPath;
     
     CABasicAnimation *pathAnimation = [CABasicAnimation animationWithKeyPath:@"strokeEnd"];
-    pathAnimation.duration = 1.5;
+    pathAnimation.duration = _animationDuration;
     pathAnimation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
     pathAnimation.fromValue =[NSNumber numberWithFloat:0.0f];
     pathAnimation.toValue = [NSNumber numberWithFloat:1.0f];
