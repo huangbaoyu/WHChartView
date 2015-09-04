@@ -16,28 +16,28 @@
 @property (nonatomic, strong)   UIColor *colorOfXYLabel;
 @property (nonatomic, strong)   UIColor *colorOfAxis;
 @property (nonatomic, strong)   UIColor *colorOfGridding;
-@property (nonatomic)           BOOL showGridding;
-@property (nonatomic)           BOOL showXLabel;
+@property (nonatomic)           BOOL showsGridding;
+@property (nonatomic)           BOOL showsXLabel;
 @property (nonatomic, strong)   NSArray *xLabelString;  //Data of XLabel
 
 
 /***  Bar in Chart ***/
-@property (nonatomic)           BOOL drawBarChart;
+@property (nonatomic)           BOOL drawsBarChart;
 @property (nonatomic, strong)   UIColor *colorOfBar;
 @property (nonatomic, strong)   UIColor *colorOfUnusedPartOfBar;
 @property (nonatomic)           CFTimeInterval animationDurationOfBar; //animationDuration
 
 
 /***  Line in Chart ***/
-@property (nonatomic)           BOOL drawLineChart;
+@property (nonatomic)           BOOL drawsLineChart;
 @property (nonatomic)           CGFloat lineWidth;
 @property (nonatomic, strong)   UIColor *colorOfLine;
 @property (nonatomic)           CFTimeInterval animationDurationOfLine;
 
-@property (nonatomic)           BOOL smoothLine;        //BazierPath
+@property (nonatomic)           BOOL smoothesLine;        //BazierPath
 @property (nonatomic)           CGFloat kOfBezierPath;
 
-@property (nonatomic)           BOOL showGradientColor; //GradientColor
+@property (nonatomic)           BOOL showsGradientColor; //GradientColor
 @property (nonatomic, strong)   NSArray *gradientColors;
 @property (nonatomic, strong)   NSArray *gradientLocations;
 @property (nonatomic)           CGPoint gradientStartPoint;

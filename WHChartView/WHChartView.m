@@ -57,24 +57,24 @@
     _colorOfXYLabel = [UIColor lightGrayColor];
     
     _colorOfAxis = [UIColor whSilver];
-    _showGridding = NO;
+    _showsGridding = NO;
     _colorOfGridding = _colorOfAxis;
-    _showXLabel = YES;
+    _showsXLabel = YES;
     
-    _drawBarChart = YES;
+    _drawsBarChart = YES;
     _colorOfBar = [UIColor whLightBlue];
     _colorOfUnusedPartOfBar = [UIColor clearColor];
     _animationDurationOfBar = 1.5;
     _animationDurationOfLine = 1.0;
     
-    _drawLineChart = NO;
+    _drawsLineChart = NO;
     _colorOfLine = [UIColor grayColor];
     _lineWidth = 2.0;
     
-    _smoothLine = YES;
+    _smoothesLine = YES;
     _kOfBezierPath = 0.25;
     
-    _showGradientColor = YES;
+    _showsGradientColor = YES;
     _gradientColors = [NSArray arrayWithObjects:(id)[UIColor whGreen].CGColor ,(id)[UIColor whOrange].CGColor,(id)[UIColor whAlizarin].CGColor, nil];
     _gradientStartPoint = CGPointMake(0.5, 0);
     _gradientEndPoint = CGPointMake(0.5, 1);
@@ -134,7 +134,7 @@
 
 - (void)drawXLabel
 {
-    if (!_showXLabel) {
+    if (!_showsXLabel) {
         return;
     }
     
@@ -220,7 +220,7 @@
 
 - (void)drawGridding
 {
-    if (!_showGridding) {
+    if (!_showsGridding) {
         return;
     }
     
@@ -243,11 +243,11 @@
 
 -(void)strokeChart
 {
-    if (_drawBarChart) {
+    if (_drawsBarChart) {
         [self drawBarInChart];
     }
     
-    if (_drawLineChart) {
+    if (_drawsLineChart) {
         [self drawLineInChart];
     }
 
@@ -284,7 +284,7 @@
     chartLine.strokeColor = _colorOfLine.CGColor;
     [self.layer addSublayer:chartLine];
     
-    if (_showGradientColor) {
+    if (_showsGradientColor) {
         CAGradientLayer *gradientLayer = [CAGradientLayer layer];
         gradientLayer.frame = CGRectMake(0, 0, self.frame.size.width, self.frame.size.height);
         [gradientLayer setColors:_gradientColors];
@@ -295,7 +295,7 @@
         [self.layer addSublayer:gradientLayer];
     }
     
-    chartLine.path = [self getBezierPathWithSmooth:_smoothLine].CGPath;
+    chartLine.path = [self getBezierPathWithSmooth:_smoothesLine].CGPath;
     
     CABasicAnimation *pathAnimation = [CABasicAnimation animationWithKeyPath:@"strokeEnd"];
     pathAnimation.duration = _animationDurationOfLine;
