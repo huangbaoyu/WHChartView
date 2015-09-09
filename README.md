@@ -1,7 +1,7 @@
 # WHChartView
 
 ![License](https://img.shields.io/badge/License-MIT-orange.svg)
-![Pod](https://img.shields.io/badge/Pod-v1.0.3-green.svg)
+![Pod](https://img.shields.io/badge/Pod-v1.1.2-green.svg)
 ![Platform](https://img.shields.io/badge/Platform-iOS-bl.svg)
 
 ## GIF
