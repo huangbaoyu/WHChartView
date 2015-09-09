@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		728A547D1B9FDAD9007E1693 /* OtherViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 728A547C1B9FDAD9007E1693 /* OtherViewController.m */; };
 		72D0D53D1B8C4F5F009C70E7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 72D0D53C1B8C4F5F009C70E7 /* main.m */; };
 		72D0D5401B8C4F5F009C70E7 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 72D0D53F1B8C4F5F009C70E7 /* AppDelegate.m */; };
 		72D0D5431B8C4F5F009C70E7 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 72D0D5421B8C4F5F009C70E7 /* ViewController.m */; };
@@ -30,6 +31,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		728A547B1B9FDAD9007E1693 /* OtherViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OtherViewController.h; sourceTree = "<group>"; };
+		728A547C1B9FDAD9007E1693 /* OtherViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OtherViewController.m; sourceTree = "<group>"; };
 		72D0D5371B8C4F5F009C70E7 /* WHChartViewDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WHChartViewDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		72D0D53B1B8C4F5F009C70E7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		72D0D53C1B8C4F5F009C70E7 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -95,6 +98,8 @@
 				72D0D53F1B8C4F5F009C70E7 /* AppDelegate.m */,
 				72D0D5411B8C4F5F009C70E7 /* ViewController.h */,
 				72D0D5421B8C4F5F009C70E7 /* ViewController.m */,
+				728A547B1B9FDAD9007E1693 /* OtherViewController.h */,
+				728A547C1B9FDAD9007E1693 /* OtherViewController.m */,
 				72D0D5441B8C4F5F009C70E7 /* Main.storyboard */,
 				72D0D5471B8C4F5F009C70E7 /* Images.xcassets */,
 				72D0D5491B8C4F5F009C70E7 /* LaunchScreen.xib */,
@@ -247,6 +252,7 @@
 				72D0D5401B8C4F5F009C70E7 /* AppDelegate.m in Sources */,
 				72D0D5661B8C4FA9009C70E7 /* UIColor+WHColor.m in Sources */,
 				72D0D5681B8C4FA9009C70E7 /* WHChartView.m in Sources */,
+				728A547D1B9FDAD9007E1693 /* OtherViewController.m in Sources */,
 				72D0D53D1B8C4F5F009C70E7 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -442,6 +448,7 @@
 				72D0D55C1B8C4F5F009C70E7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		72D0D55D1B8C4F5F009C70E7 /* Build configuration list for PBXNativeTarget "WHChartViewDemoTests" */ = {
 			isa = XCConfigurationList;
@@ -450,6 +457,7 @@
 				72D0D55F1B8C4F5F009C70E7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

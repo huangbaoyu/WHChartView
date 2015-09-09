@@ -56,7 +56,7 @@
     _colorOfTitle = [UIColor whAsbestos];
     _colorOfXYLabel = [UIColor lightGrayColor];
     
-    _colorOfAxis = [UIColor whSilver];
+    _colorOfAxis = [UIColor whClouds];
     _showsGridding = NO;
     _colorOfGridding = _colorOfAxis;
     _showsXLabel = YES;
@@ -64,6 +64,9 @@
     _drawsBarChart = YES;
     _colorOfBar = [UIColor whLightBlue];
     _colorOfUnusedPartOfBar = [UIColor clearColor];
+    _showsShadowOfBar = NO;
+    _colorOfShadow = [UIColor colorWithRed:0.35 green:0.45 blue:0.55 alpha:0.9];
+    _angleOfShadow = 30.0;
     _animationDurationOfBar = 1.5;
     _animationDurationOfLine = 1.0;
     
@@ -92,6 +95,15 @@
     barHeight = origin.y - yEnd.y -9;
     
     [self findMaxAndMinNumberOfData];
+}
+
+- (void)setAngelOfShadow:(double)angleOfShadow
+{
+    if (angleOfShadow > 0.0 && angleOfShadow < 90.0) {
+        _angleOfShadow = angleOfShadow;
+    }else{
+        NSLog(@"\n------The angel of shadow should be in range (0.0,90.0); \n------Now, the value is 30(default);NSLog from setter of angelOfShadow.");
+    }
 }
 
 
@@ -269,8 +281,48 @@
         bar.colorOfUnusedPart = _colorOfUnusedPartOfBar;
         bar.animationDuration = _animationDurationOfBar;
         bar.percentage = percentage;
+        
+        if (_showsShadowOfBar) {
+            [self drawShadowOfBar:bar];
+        }
+        
         [self addSubview:bar];
+        
     }
+}
+
+- (void)drawShadowOfBar:(WHChartBar *)bar
+{
+    
+    double widthOfShadow = barHeight * bar.percentage * tan(_angleOfShadow/180 * M_PI);
+    
+    UIBezierPath *path = [UIBezierPath bezierPath];
+    [path moveToPoint:CGPointMake(bar.frame.origin.x+bar.frame.size.width - 0.4,  bar.frame.origin.y+barHeight*(1-bar.percentage))];
+    [path addLineToPoint:CGPointMake(bar.frame.origin.x+bar.frame.size.width -0.4,   origin.y)];
+    [path addLineToPoint:CGPointMake(bar.frame.origin.x+bar.frame.size.width + widthOfShadow - 0.4,   origin.y)];
+    [path addLineToPoint:CGPointMake(bar.frame.origin.x+bar.frame.size.width - 0.4,  bar.frame.origin.y+barHeight*(1-bar.percentage))];
+    
+    CAShapeLayer *shadow = [CAShapeLayer layer];
+    shadow.lineCap = kCALineCapSquare;
+    shadow.fillColor = _colorOfShadow.CGColor;
+    shadow.path = path.CGPath;
+    shadow.bounds = CGRectMake(0, 0 , self.frame.size.width, self.frame.size.height);
+    shadow.position = CGPointMake(self.frame.size.width/2, self.frame.size.height/2);
+    shadow.masksToBounds = YES;
+    
+    UIBezierPath *tempPath = [UIBezierPath bezierPath];
+    [tempPath moveToPoint:CGPointMake(bar.frame.origin.x+bar.frame.size.width - 0.4,  origin.y)];
+    [tempPath addLineToPoint:CGPointMake(bar.frame.origin.x+bar.frame.size.width -0.4,   origin.y)];
+    
+    CABasicAnimation *pathAnimation = [CABasicAnimation animationWithKeyPath:@"path"];
+    pathAnimation.duration = _animationDurationOfBar;
+    pathAnimation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
+    pathAnimation.fromValue = (__bridge id)((tempPath.CGPath));
+    pathAnimation.toValue = (__bridge id)((path.CGPath));
+    pathAnimation.autoreverses = NO;
+    [shadow addAnimation:pathAnimation forKey:@"pathAnimation"];
+    
+    [self.layer addSublayer:shadow];
 }
 
 - (void)drawLineInChart

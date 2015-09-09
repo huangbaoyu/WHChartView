@@ -25,6 +25,9 @@
 @property (nonatomic)           BOOL drawsBarChart;
 @property (nonatomic, strong)   UIColor *colorOfBar;
 @property (nonatomic, strong)   UIColor *colorOfUnusedPartOfBar;
+@property (nonatomic)           BOOL showsShadowOfBar;
+@property (nonatomic, strong)   UIColor *colorOfShadow;
+@property (nonatomic)           double angleOfShadow;
 @property (nonatomic)           CFTimeInterval animationDurationOfBar; //animationDuration
 
 

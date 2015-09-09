@@ -15,10 +15,12 @@
 + (instancetype)whGreen;
 + (instancetype)whLightGreen;
 + (instancetype)whSilver;
++ (instancetype)whSilverWithAlpha:(CGFloat)alpha;
 + (instancetype)whClouds;
 + (instancetype)whAlizarin;
 + (instancetype)whCarrot;
 + (instancetype)whOrange;
 + (instancetype)whAsbestos;
++ (instancetype)whConcrete;
 
 @end

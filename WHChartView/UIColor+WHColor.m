@@ -35,6 +35,10 @@
     //rgb(189, 195, 199)
 }
 
++ (instancetype)whSilverWithAlpha:(CGFloat)alpha {
+    return [UIColor colorWithRed:189.0/255.0 green:195.0/255.0 blue:199.0/255.0 alpha:(alpha > 0 && alpha <= 1.0) ? alpha:1.0];
+}
+
 + (instancetype)whClouds{
     return [UIColor colorWithRed:236.0/255.0 green:240.0/255.0 blue:241.0/255.0 alpha:1.0];
     //rgb(236, 240, 241)
@@ -60,4 +64,10 @@
     return [UIColor colorWithRed:127.0/255.0 green:140.0/255.0 blue:141.0/255.0 alpha:1.0];
     //rgb(127, 140, 141)
 }
+
++ (instancetype)whConcrete {
+    return [UIColor colorWithRed:149.0/255.0 green:165.0/255.0 blue:166.0/255.0 alpha:1.0];
+    //rgb(149, 165, 166)
+}
+
 @end

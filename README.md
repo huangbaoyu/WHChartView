@@ -6,7 +6,7 @@
 
 ## GIF
 
-![screen{](https://raw.githubusercontent.com/wongkoo/WHChartView/master/Presentation/WHChartView1-0-3.gif)
+![screen{](https://raw.githubusercontent.com/wongkoo/WHChartView/master/Presentation/WHChartView1-1-2.gif)
 
 ## Usage
 
@@ -53,6 +53,9 @@ WHChartView *chart = [[WHChartView alloc]initWithFrame:(CGRect)rect];
 @property (nonatomic)           BOOL drawsBarChart;
 @property (nonatomic, strong)   UIColor *colorOfBar;
 @property (nonatomic, strong)   UIColor *colorOfUnusedPartOfBar;
+@property (nonatomic)           BOOL showsShadowOfBar;
+@property (nonatomic, strong)   UIColor *colorOfShadow;
+@property (nonatomic)           double angleOfShadow;
 @property (nonatomic)           CFTimeInterval animationDurationOfBar; //animationDuration
 
 
@@ -82,21 +85,40 @@ WHChartView *chart = [[WHChartView alloc]initWithFrame:(CGRect)rect];
     NSArray *dataValue = @[@123.5,@122,@87,@101.1,@16,@60.6,@51,@44,@20,@18,@98,@110,@19,@77];
     NSArray *xLabelString = @[@"6-10",@"6-11",@"6-12",@"6-13",@"6-14",@"6-15",@"6-16",@"6-17",@"6-12",@"6-13",@"6-14",@"6-15",@"6-16",@"6-17"];
 
-    //chart.backgroundColor = [UIColor grayColor];
-    chart.xLabelString = xLabelString;
+    /***  Coordinate ***/
     chart.title = @"Bar and Line";
+    //chart.colorOfTitle = [UIColor whClouds];              //Using default value;
+    //chart.colorOfXYLabel = [UIColor lightGrayColor];      //Using default value;
+    //chart.colorOfAxis = [UIColor whClouds];               //Using default value;
+    //chart.colorOfGridding = [UIColor whClouds];           //Using default value;
     chart.showsGridding = YES;
-    chart.showsGradientColor = YES;
+    chart.showsXLabel = YES;
+    chart.xLabelString = xLabelString;
+    
+    /***  Bar in Chart ***/
     chart.drawsBarChart = YES;
+    chart.colorOfBar = [UIColor whAsbestos];
+    chart.colorOfUnusedPartOfBar = [UIColor clearColor];
+    chart.showsShadowOfBar = NO;
+    //chart.colorOfShadow = [UIColor colorWithRed:0.35 green:0.45 blue:0.55 alpha:0.9];
+    //chart.angleOfShadow = 30.0;
+    //chart.animationDurationOfBar = 1.5;                   //Using default value;
+    
+    /***  Line in Chart ***/
     chart.drawsLineChart = YES;
+    //chart.lineWidth = 1.0;                                //Using default value;
+    //chart.colorOfLine = [UIColor blackColor];
+    //chart.animationDurationOfLine = 1.5;                  //Using default value;
+    
     chart.smoothesLine = YES;
-    chart.colorOfAxis = [UIColor whClouds];
-    chart.colorOfGridding = [UIColor whClouds];
-    chart.colorOfLine = [UIColor grayColor];
-    chart.colorOfTitle = [UIColor blackColor];
-    chart.colorOfXYLabel = [UIColor lightGrayColor];
-    chart.colorOfBar = [UIColor whLightBlue];
+    //chart.kOfBezierPath = 0.25;                           //Using default value;
+    chart.showsGradientColor = YES;
+    //chart.gradientColors = [NSArray arrayWithObjects:(id)[UIColor whGreen].CGColor ,(id)[UIColor whOrange].CGColor,(id)[UIColor whAlizarin].CGColor, nil];                            //Using default value;
+    //chart.gradientLocations = @[@0.2,@0.5,@0.9 ];         //Using default value;
+    //chart.gradientStartPoint = CGPointMake(0.5, 0);       //Using default value;
+    //chart.gradientEndPoint = CGPointMake(0.5, 1);         //Using default value;
 
+    
     [chart setChartData:dataValue];
     [chart strokeChart];
 
