@@ -20,9 +20,9 @@
     float spaceBetweenYandLeft;     //distance between Y-axis and left side of chart
     float spaceBetweenXandBottom;   //distance between X-axis and bottom side of chart
     
-    float   maxOfFloatData;                      //max number of data
-    float   minOfFloatData;                      //min number of data
-    int     maxOfIntData;
+    float maxOfFloatData;           //max number of data
+    float minOfFloatData;           //min number of data
+    int   maxOfIntData;
 }
 
 @property (nonatomic, strong) NSMutableArray *data;     //store data

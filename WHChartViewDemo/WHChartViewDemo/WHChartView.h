@@ -11,7 +11,7 @@
 @interface WHChartView : UIView
 
 /***  Coordinate ***/
-@property (nonatomic, strong)   NSString *title;
+@property (nonatomic, copy)     NSString *title;
 @property (nonatomic, strong)   UIColor *colorOfTitle;
 @property (nonatomic, strong)   UIColor *colorOfXYLabel;
 @property (nonatomic, strong)   UIColor *colorOfAxis;
