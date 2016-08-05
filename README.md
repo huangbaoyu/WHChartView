@@ -1,3 +1,9 @@
+# Attention Please
+
+**There is a new chart named [WZHChartView](https://github.com/wongkoo/WZHChartView) in my repositories.**
+**The refactoring in WZHChartView is exciting. It will be updated continuously.**
+**WHChartView will not be updated.**
+
 # WHChartView
 
 ![License](https://img.shields.io/badge/License-MIT-orange.svg)
